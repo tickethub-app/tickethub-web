@@ -1,6 +1,7 @@
+import CommunityCard from '../../components/CommunityCard';
 import EventCard from '../../components/EventCard';
 import Header from '../../components/Header';
-import { MainContent } from './styles';
+import { MainContent, CommunitiesList } from './styles';
 
 export default function Home() {
 	return (
@@ -15,22 +16,28 @@ export default function Home() {
 					<EventCard />
 					<EventCard />
 					<EventCard />
-					<EventCard />
 				</ul>
 			</MainContent>
 
-			<aside>
+			<CommunitiesList>
 				<header>
 					<h2>Find communities</h2>
 					<a href="">See all</a>
 				</header>
 				<ul>
-					<li>
-						<img src="" alt="community" />
-						<h3>Mozdevz</h3>
-					</li>
+					<CommunityCard />
+					{/* <CommunityCard />
+					<CommunityCard />
+					<CommunityCard />
+					<CommunityCard />
+					<CommunityCard />
+					<CommunityCard />
+					<CommunityCard />
+					<CommunityCard />
+					<CommunityCard />
+					<CommunityCard /> */}
 				</ul>
-			</aside>
+			</CommunitiesList>
 
 			<footer>Copyright Ticket Hub. All rights reserved.</footer>
 		</>
