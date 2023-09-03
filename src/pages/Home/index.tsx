@@ -1,3 +1,4 @@
+import EventCard from '../../components/EventCard';
 import Header from '../../components/Header';
 import { MainContent } from './styles';
 
@@ -10,13 +11,11 @@ export default function Home() {
 					<h1>Upcoming events</h1> <a href="">See all</a>
 				</header>
 				<ul>
-					<li>
-						<img src="" alt="event image" />
-						<div>15 July</div>
-						<h3>Data Wave</h3>
-						<span>100 tickets left</span>
-						<span>FENG UEM</span>
-					</li>
+					<EventCard />
+					<EventCard />
+					<EventCard />
+					<EventCard />
+					<EventCard />
 				</ul>
 			</MainContent>
 

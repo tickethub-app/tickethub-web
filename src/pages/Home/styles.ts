@@ -4,7 +4,7 @@ export const BaseContainer = styled.div`
 	width: 92%;
 	max-width: 97.8rem;
 	margin: auto;
-	padding: 0 24px;
+	padding: 0 2.4rem;
 	background: ${(props) => props.theme.colors.boxFill};
 `;
 
@@ -15,6 +15,17 @@ export const MainContent = styled(BaseContainer).attrs({ as: 'main' })`
 		justify-content: space-between;
 		a {
 			font-size: 1.6rem;
+			&:hover {
+				color: ${(props) => props.theme.colors.primary};
+			}
 		}
+	}
+
+	ul {
+		margin-top: 1.6rem;
+		list-style: none;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 2.4rem;
 	}
 `;

@@ -28,8 +28,5 @@ h1, h2 {
 a {
 	text-decoration: none;
 	color: ${(props) => props.theme.colors.textBase};
-	&:hover {
-		color: ${(props) => props.theme.colors.primary};
-	}
 }
 `;
