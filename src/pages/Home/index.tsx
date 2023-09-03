@@ -1,10 +1,9 @@
+import Header from '../../components/Header';
+
 export default function Home() {
 	return (
 		<>
-			<header>
-				<img src="" alt="logo" /> <button type="button">Get started</button>
-			</header>
-
+			<Header />
 			<main>
 				<header>
 					<h1>Upcoming events</h1> <a href="">See all</a>
