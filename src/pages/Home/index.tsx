@@ -1,5 +1,6 @@
 import CommunityCard from '../../components/CommunityCard';
 import EventCard from '../../components/EventCard';
+import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import { MainContent, CommunitiesList } from './styles';
 
@@ -26,7 +27,6 @@ export default function Home() {
 				</header>
 				<ul>
 					<CommunityCard />
-					{/* <CommunityCard />
 					<CommunityCard />
 					<CommunityCard />
 					<CommunityCard />
@@ -35,11 +35,12 @@ export default function Home() {
 					<CommunityCard />
 					<CommunityCard />
 					<CommunityCard />
-					<CommunityCard /> */}
+					<CommunityCard />
+					<CommunityCard />
 				</ul>
 			</CommunitiesList>
 
-			<footer>Copyright Ticket Hub. All rights reserved.</footer>
+			<Footer />
 		</>
 	);
 }

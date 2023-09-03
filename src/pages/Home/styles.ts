@@ -32,6 +32,7 @@ export const MainContent = styled(BaseContainer).attrs({ as: 'main' })`
 
 export const CommunitiesList = styled(BaseContainer).attrs({ as: 'aside' })`
 	padding-top: 3.2rem;
+	padding-bottom: 4.8rem;
 
 	header {
 		display: flex;
