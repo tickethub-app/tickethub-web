@@ -19,4 +19,17 @@ body {
 	color: ${(props) => props.theme.colors.textBase};
 	font-size: 1.4rem;
 }
+
+h1, h2 {
+	font-size: 1.6rem;
+	color: ${(props) => props.theme.colors.textTitle};
+}
+
+a {
+	text-decoration: none;
+	color: ${(props) => props.theme.colors.textBase};
+	&:hover {
+		color: ${(props) => props.theme.colors.primary};
+	}
+}
 `;

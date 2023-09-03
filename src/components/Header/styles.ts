@@ -18,7 +18,6 @@ export const LinkButton = styled.a`
 	padding: 1.2rem 2.4rem;
 	border-radius: 0.4rem;
 	font-weight: 700;
-	text-decoration: none;
 	background-color: ${(props) => props.theme.colors.primary};
 	color: ${(props) => props.theme.colors.white};
 
