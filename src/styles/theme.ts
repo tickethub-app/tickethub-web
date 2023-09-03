@@ -9,6 +9,7 @@ export const theme: DefaultTheme = {
 		inputBorder: '#E4DFDF',
 		inputText: '#807A7A',
 		background: '#F0F0F0',
-		boxFill: '#FFFFFF'
+		boxFill: '#FFFFFF',
+		white: '#FFFFFF'
 	}
 };

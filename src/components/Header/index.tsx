@@ -5,7 +5,7 @@ import { LinkButton } from './styles';
 export default function Header() {
 	return (
 		<Container>
-			<img src={logoBlue} alt="logo" /> <a href="">Get started</a>
+			<img src={logoBlue} alt="logo" /> <LinkButton href="">Get started</LinkButton>
 		</Container>
 	);
 }

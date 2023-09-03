@@ -11,6 +11,7 @@ declare module 'styled-components' {
 			inputText: string;
 			background: string;
 			boxFill: string;
+			white: string;
 		};
 	}
 }

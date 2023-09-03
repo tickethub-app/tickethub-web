@@ -1,10 +1,11 @@
 import Header from '../../components/Header';
+import { MainContent } from './styles';
 
 export default function Home() {
 	return (
 		<>
 			<Header />
-			<main>
+			<MainContent>
 				<header>
 					<h1>Upcoming events</h1> <a href="">See all</a>
 				</header>
@@ -17,7 +18,7 @@ export default function Home() {
 						<span>FENG UEM</span>
 					</li>
 				</ul>
-			</main>
+			</MainContent>
 
 			<aside>
 				<header>
