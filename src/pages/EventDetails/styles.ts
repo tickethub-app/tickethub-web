@@ -45,6 +45,13 @@ export const MainContent = styled(BaseContainer).attrs({ as: 'main' })`
 		margin-bottom: 1.6rem;
 	}
 
+	> div {
+		@media (min-width: 768px) {
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+
 	section {
 		height: 4.8rem;
 		display: flex;
@@ -74,13 +81,24 @@ export const MainContent = styled(BaseContainer).attrs({ as: 'main' })`
 
 		& + section {
 			margin-top: 1.2rem;
+			@media (min-width: 768px) {
+				margin-top: 0;
+			}
 		}
 	}
 `;
 
 export const RegisterButton = styled(LinkButton)`
 	display: block;
-	margin: 4.8rem auto;
+	margin: 4.8rem auto 0;
 	text-align: center;
 	max-width: 28rem;
+`;
+
+export const DetailsBox = styled(BaseContainer).attrs({ as: 'aside' })`
+	padding-top: 4.8rem;
+	padding-bottom: 4.8rem;
+	h2 {
+		margin-bottom: 1.6rem;
+	}
 `;
