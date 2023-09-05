@@ -1,13 +1,19 @@
+import { Header } from './styles';
+import dataImg from '../../assets/data_wave.jpg';
+import { ArrowLeft } from '@phosphor-icons/react';
+
 export default function EventDetails() {
 	return (
 		<>
-			<header>
+			<Header>
 				<div>
-					<span>icon</span>
+					<a href="">
+						<ArrowLeft size={24} className="icon" color="#FFF" />
+					</a>
 					<h2>Event details</h2>
 				</div>
-				<img src="" alt="" />
-			</header>
+				<img src={dataImg} alt="" />
+			</Header>
 
 			<main>
 				<h1>Data wave</h1>

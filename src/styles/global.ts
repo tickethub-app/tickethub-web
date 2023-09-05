@@ -29,4 +29,14 @@ a {
 	text-decoration: none;
 	color: ${(props) => props.theme.colors.textBase};
 }
+
+img {
+	width: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.icon {
+	/* color: red; */
+}
 `;

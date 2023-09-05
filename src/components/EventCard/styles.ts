@@ -33,9 +33,6 @@ export const Image = styled.figure`
 
 	img {
 		height: 16rem;
-		width: 100%;
-		object-fit: cover;
-		object-position: center;
 	}
 
 	figcaption {
