@@ -1,6 +1,7 @@
-import { Header } from './styles';
+import { ArrowLeft, Calendar, MapPin } from '@phosphor-icons/react';
+import { Header, MainContent, RegisterButton } from './styles';
 import dataImg from '../../assets/data_wave.jpg';
-import { ArrowLeft } from '@phosphor-icons/react';
+import mozdevz_logo from '../../assets/mozdevz.png';
 
 export default function EventDetails() {
 	return (
@@ -15,11 +16,11 @@ export default function EventDetails() {
 				<img src={dataImg} alt="" />
 			</Header>
 
-			<main>
+			<MainContent>
 				<h1>Data wave</h1>
 
 				<section>
-					<img src="" alt="" />
+					<img src={mozdevz_logo} alt="" />
 					<div>
 						<strong>Mozdevz</strong>
 						<small>Organizer</small>
@@ -27,7 +28,7 @@ export default function EventDetails() {
 				</section>
 
 				<section>
-					<img src="" alt="" />
+					<Calendar weight="fill" className="icon" />
 					<div>
 						<strong>9 July, 2023</strong>
 						<small>Saturday, 8AM-3PM</small>
@@ -35,15 +36,15 @@ export default function EventDetails() {
 				</section>
 
 				<section>
-					<img src="" alt="" />
+					<MapPin weight="fill" className="icon" />
 					<div>
 						<strong>Feng UEM</strong>
 						<small>FENG UEM</small>
 					</div>
 				</section>
 
-				<a href="">RSVP</a>
-			</main>
+				<RegisterButton href="">RSVP</RegisterButton>
+			</MainContent>
 
 			<aside>
 				<h2>Description</h2>
