@@ -1,10 +1,18 @@
-import CommunityCard from '../../components/CommunityCard';
+import { useState, useEffect } from 'react';
+import { getItems } from '../../api';
+import CommunityCard, { CommunityProps } from '../../components/CommunityCard';
 import EventCard from '../../components/EventCard';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import { MainContent, CommunitiesList } from './styles';
 
 export default function Home() {
+	const [organizations, setOrganizations] = useState<CommunityProps[]>([]);
+
+	useEffect(() => {
+		getItems('/organisations').then((response) => setOrganizations(response.data));
+	}, []);
+
 	return (
 		<>
 			<Header />
@@ -26,17 +34,10 @@ export default function Home() {
 					<a href="">See all</a>
 				</header>
 				<ul>
-					<CommunityCard />
-					<CommunityCard />
-					<CommunityCard />
-					<CommunityCard />
-					<CommunityCard />
-					<CommunityCard />
-					<CommunityCard />
-					<CommunityCard />
-					<CommunityCard />
-					<CommunityCard />
-					<CommunityCard />
+					{organizations &&
+						organizations.map((org) => {
+							return <CommunityCard key={org.id} id={org.id} name={org.name} email={org.email} />;
+						})}
 				</ul>
 			</CommunitiesList>
 
