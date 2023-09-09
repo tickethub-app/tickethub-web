@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
-import { getItems } from '../../api';
+import { getItems } from '../../services/api';
 import CommunityCard, { CommunityProps } from '../../components/CommunityCard';
-import EventCard from '../../components/EventCard';
+import EventCard, { EventProps } from '../../components/EventCard';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import { MainContent, CommunitiesList } from './styles';
 
 export default function Home() {
 	const [organizations, setOrganizations] = useState<CommunityProps[]>([]);
+	const [events, setEvents] = useState<EventProps[]>([]);
 
 	useEffect(() => {
+		getItems('/events').then((response) => setEvents(response.data));
 		getItems('/organisations').then((response) => setOrganizations(response.data));
 	}, []);
 
@@ -21,10 +23,17 @@ export default function Home() {
 					<h1>Upcoming events</h1> <a href="">See all</a>
 				</header>
 				<ul>
-					<EventCard />
-					<EventCard />
-					<EventCard />
-					<EventCard />
+					{events.map((event) => (
+						<EventCard
+							key={event.id}
+							id={event.id}
+							topic={event.topic}
+							date={event.date}
+							number_tickets={event.number_tickets}
+							image={event.image}
+							organisation_id={event.organisation_id}
+						/>
+					))}
 				</ul>
 			</MainContent>
 
