@@ -8,8 +8,8 @@ function App() {
 	return (
 		<>
 			<ThemeProvider theme={theme}>
-				<Home />
-				{/* <EventDetails /> */}
+				{/* <Home /> */}
+				<EventDetails />
 				<GlobalStyle />
 			</ThemeProvider>
 		</>

@@ -2,7 +2,7 @@ import { Container, Image } from './styles';
 import dataImg from '../../assets/data_wave.jpg';
 import { getShortMonth } from '../../utils/dates';
 
-export interface EventProps {
+export interface EventCardProps {
 	id: string;
 	number_tickets: number;
 	date: Date;
@@ -11,7 +11,7 @@ export interface EventProps {
 	organisation_id: string;
 }
 
-export default function EventCard({ id, date, image, number_tickets, organisation_id, topic }: EventProps) {
+export default function EventCard({ id, date, image, number_tickets, organisation_id, topic }: EventCardProps) {
 	const parsedDate = new Date(date);
 	return (
 		<Container>

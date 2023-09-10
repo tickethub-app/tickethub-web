@@ -33,6 +33,7 @@ export const Header = styled(BaseContainer).attrs({ as: 'header' })`
 	}
 	img {
 		height: 26rem;
+		width: 100%;
 	}
 `;
 

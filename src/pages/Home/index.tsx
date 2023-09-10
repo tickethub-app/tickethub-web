@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { getItems } from '../../services/api';
 import CommunityCard, { CommunityProps } from '../../components/CommunityCard';
-import EventCard, { EventProps } from '../../components/EventCard';
+import EventCard, { EventCardProps } from '../../components/EventCard';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import { MainContent, CommunitiesList } from './styles';
 
 export default function Home() {
 	const [organizations, setOrganizations] = useState<CommunityProps[]>([]);
-	const [events, setEvents] = useState<EventProps[]>([]);
+	const [events, setEvents] = useState<EventCardProps[]>([]);
 
 	useEffect(() => {
 		getItems('/events').then((response) => setEvents(response.data));
