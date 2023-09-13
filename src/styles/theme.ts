@@ -10,6 +10,8 @@ export const theme: DefaultTheme = {
 		inputText: '#807A7A',
 		background: '#F0F0F0',
 		boxFill: '#FFFFFF',
-		white: '#FFFFFF'
+		white: '#FFFFFF',
+		black: '#000000',
+		transparent: '#00000080'
 	}
 };

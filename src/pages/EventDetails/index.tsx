@@ -1,5 +1,6 @@
 import { ArrowLeft, Calendar, MapPin } from '@phosphor-icons/react';
-import { Header, MainContent, RegisterButton, DetailsBox } from './styles';
+import { Header, MainContent, RegisterButton, DetailsBox, DialogOverlay, DialogContent } from './styles';
+import * as Dialog from '@radix-ui/react-dialog';
 import * as dayjs from 'dayjs';
 import dataImg from '../../assets/data_wave.jpg';
 import mozdevz_logo from '../../assets/mozdevz.png';
@@ -69,7 +70,36 @@ export default function EventDetails() {
 							</div>
 						</section>
 					</div>
-					<RegisterButton href="">RSVP</RegisterButton>
+					<Dialog.Root>
+						<Dialog.Trigger asChild>
+							<RegisterButton>RSVP</RegisterButton>
+						</Dialog.Trigger>
+						<Dialog.Portal>
+							<DialogOverlay />
+							<DialogContent>
+								<h1>Edit profile</h1>
+								{/* <DialogDescription>Make changes to your profile here. Click save when you're done.</DialogDescription>
+								<Fieldset>
+									<Label htmlFor="name">Name</Label>
+									<Input id="name" defaultValue="Pedro Duarte" />
+								</Fieldset>
+								<Fieldset>
+									<Label htmlFor="username">Username</Label>
+									<Input id="username" defaultValue="@peduarte" />
+								</Fieldset>
+								<Flex css={{ marginTop: 25, justifyContent: 'flex-end' }}> */}
+								<Dialog.Close asChild>
+									<button>Save changes</button>
+								</Dialog.Close>
+								{/* </Flex> */}
+								<Dialog.Close asChild>
+									{/* <IconButton aria-label="Close">
+										<Cross2Icon />
+									</IconButton> */}
+								</Dialog.Close>
+							</DialogContent>
+						</Dialog.Portal>
+					</Dialog.Root>
 				</MainContent>
 			)}
 

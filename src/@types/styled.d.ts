@@ -12,6 +12,8 @@ declare module 'styled-components' {
 			background: string;
 			boxFill: string;
 			white: string;
+			black: string;
+			transparent: string;
 		};
 	}
 }

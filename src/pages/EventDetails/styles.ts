@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { BaseContainer } from '../../components/BaseContainer';
 import { LinkButton } from '../../components/Header/styles';
+import { Overlay, Content } from '@radix-ui/react-dialog';
 
 export const Header = styled(BaseContainer).attrs({ as: 'header' })`
 	padding: 0;
@@ -89,7 +90,7 @@ export const MainContent = styled(BaseContainer).attrs({ as: 'main' })`
 	}
 `;
 
-export const RegisterButton = styled(LinkButton)`
+export const RegisterButton = styled.button`
 	display: block;
 	margin: 4.8rem auto 0;
 	text-align: center;
@@ -101,5 +102,50 @@ export const DetailsBox = styled(BaseContainer).attrs({ as: 'aside' })`
 	padding-bottom: 4.8rem;
 	h2 {
 		margin-bottom: 1.6rem;
+	}
+`;
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+const contentShow = keyframes`
+  0% {
+		opacity: 0;
+		transform: translate(-50%, -48%) scale(.96);
+	}
+  100% {
+		opacity: 1;
+		transform: translate(-50%, -50%) scale(1);
+	}
+`;
+
+export const DialogOverlay = styled(Overlay)`
+	background-color: ${(props) => props.theme.colors.transparent};
+	position: fixed;
+	inset: 0;
+	animation: ${fadeIn} 150ms cubic-bezier(0.16, 1, 0.3, 1);
+`;
+
+export const DialogContent = styled(Content)`
+	background-color: ${(props) => props.theme.colors.white};
+	border-radius: 0.8rem;
+	box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 90vw;
+	max-width: 450px;
+	max-height: 85vh;
+	padding: 2.4rem;
+	animation: ${contentShow} 150ms cubic-bezier(0.16, 1, 0.3, 1);
+
+	&:focus {
+		outline: none;
 	}
 `;
