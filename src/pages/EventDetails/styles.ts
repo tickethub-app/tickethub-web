@@ -1,7 +1,9 @@
 import styled, { keyframes } from 'styled-components';
 import { BaseContainer } from '../../components/BaseContainer';
 import { LinkButton } from '../../components/Header/styles';
-import { Overlay, Content } from '@radix-ui/react-dialog';
+import { Overlay, Content, Trigger } from '@radix-ui/react-dialog';
+import { ButtonStyles } from '../../components/Button/styles';
+import Button from '../../components/Button';
 
 export const Header = styled(BaseContainer).attrs({ as: 'header' })`
 	padding: 0;
@@ -48,6 +50,7 @@ export const MainContent = styled(BaseContainer).attrs({ as: 'main' })`
 	}
 
 	> div {
+		margin-bottom: 4.8rem;
 		@media (min-width: 768px) {
 			display: flex;
 			justify-content: space-between;
@@ -140,7 +143,7 @@ export const DialogContent = styled(Content)`
 	left: 50%;
 	transform: translate(-50%, -50%);
 	width: 90vw;
-	max-width: 450px;
+	max-width: 45rem;
 	max-height: 85vh;
 	padding: 2.4rem;
 	animation: ${contentShow} 150ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -148,4 +151,8 @@ export const DialogContent = styled(Content)`
 	&:focus {
 		outline: none;
 	}
+`;
+
+export const Form = styled.form`
+	margin-top: 2.4rem;
 `;

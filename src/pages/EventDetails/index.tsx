@@ -8,6 +8,7 @@ import Footer from '../../components/Footer';
 import { useEffect, useState } from 'react';
 import { getItem } from '../../services/api';
 import { getFullDate } from '../../utils/dates';
+import Button from '../../components/Button';
 
 interface EventProps {
 	id: string;
@@ -72,12 +73,22 @@ export default function EventDetails() {
 					</div>
 					<Dialog.Root>
 						<Dialog.Trigger asChild>
-							<RegisterButton>RSVP</RegisterButton>
+							<Button text="RSVP" marginAuto />
 						</Dialog.Trigger>
 						<Dialog.Portal>
 							<DialogOverlay />
 							<DialogContent>
-								<h1>Edit profile</h1>
+								<h2>Attendee information</h2>
+								<form action="">
+									<fieldset>
+										<input type="text" />
+										<input type="text" />
+									</fieldset>
+
+									<Dialog.Close asChild>
+										<Button text="RSVP" marginAuto />
+									</Dialog.Close>
+								</form>
 								{/* <DialogDescription>Make changes to your profile here. Click save when you're done.</DialogDescription>
 								<Fieldset>
 									<Label htmlFor="name">Name</Label>
@@ -88,9 +99,6 @@ export default function EventDetails() {
 									<Input id="username" defaultValue="@peduarte" />
 								</Fieldset>
 								<Flex css={{ marginTop: 25, justifyContent: 'flex-end' }}> */}
-								<Dialog.Close asChild>
-									<button>Save changes</button>
-								</Dialog.Close>
 								{/* </Flex> */}
 								<Dialog.Close asChild>
 									{/* <IconButton aria-label="Close">
