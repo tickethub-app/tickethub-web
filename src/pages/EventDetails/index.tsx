@@ -6,7 +6,7 @@ import dataImg from '../../assets/data_wave.jpg';
 import mozdevz_logo from '../../assets/mozdevz.png';
 import Footer from '../../components/Footer';
 import { FormEvent, FormEventHandler, useEffect, useState } from 'react';
-import { getItem } from '../../services/api';
+import { getItem, postItem } from '../../services/api';
 import { getFullDate } from '../../utils/dates';
 import Button from '../../components/Button';
 import { Form } from '../../components/Form/styles';
@@ -28,14 +28,23 @@ export default function EventDetails() {
 	const [event, setEvent] = useState<EventProps | null>();
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
+	const [modalOpen, setModalOpen] = useState(false);
 
 	useEffect(() => {
 		getItem('/events/5eeb03bf-bb19-4b82-8686-7be55a9d5f87').then((response) => setEvent(response.data));
 	}, []);
 
-	function handleSubmitRsvp(e: FormEvent<HTMLFormElement>) {
+	async function handleSubmitRsvp(e: FormEvent<HTMLFormElement>) {
 		e.preventDefault();
+		try {
+			const ticket = await postItem('/tickets', {
+				attendee_name: name,
+				attendee_email: email,
+				event_id: '5eeb03bf-bb19-4b82-8686-7be55a9d5f87'
+			});
+		} catch (error) {
 
+		}
 	}
 	return (
 		<>
@@ -80,7 +89,7 @@ export default function EventDetails() {
 							</div>
 						</section>
 					</div>
-					<Dialog.Root>
+					<Dialog.Root open={modalOpen} onOpenChange={setModalOpen}>
 						<Dialog.Trigger asChild>
 							<Button text="RSVP" marginAuto />
 						</Dialog.Trigger>
@@ -94,9 +103,7 @@ export default function EventDetails() {
 										<Input type="email" placeholder="E-mail" onChange={(e) => setEmail(e.target.value)} />
 									</fieldset>
 
-									<Dialog.Close asChild>
-										<Button text="RSVP" marginAuto type="submit" />
-									</Dialog.Close>
+									<Button text="RSVP" marginAuto type="submit" />
 								</Form>
 							</DialogContent>
 						</Dialog.Portal>
