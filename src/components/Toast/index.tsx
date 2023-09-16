@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import * as RadixToast from '@radix-ui/react-toast';
 import { useToast } from '../../contexts/toast';
 import { ToastViewport, ToastRoot, ToastTitle } from './styles';

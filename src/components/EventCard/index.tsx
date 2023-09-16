@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Container, Image } from './styles';
 import dataImg from '../../assets/data_wave.jpg';
 import { getShortMonth } from '../../utils/dates';
@@ -15,7 +16,7 @@ export default function EventCard({ id, date, image, number_tickets, organisatio
 	const parsedDate = new Date(date);
 	return (
 		<Container>
-			<a href="">
+			<Link to={'events/' + id}>
 				<Image>
 					<img src={dataImg} alt="event image" style={{ width: '100%' }} />
 					<figcaption>
@@ -27,7 +28,7 @@ export default function EventCard({ id, date, image, number_tickets, organisatio
 					<span>{number_tickets} tickets</span>
 					<small>FENG UEM</small>
 				</footer>
-			</a>
+			</Link>
 		</Container>
 	);
 }
