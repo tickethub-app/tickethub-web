@@ -12,6 +12,7 @@ import Button from '../../components/Button';
 import { Form } from '../../components/Form/styles';
 import { Input } from '../../components/Input/styles';
 import Toast from '../../components/Toast';
+import { useToast } from '../../contexts/toast';
 
 interface EventProps {
 	id: string;
@@ -31,6 +32,8 @@ export default function EventDetails() {
 	const [email, setEmail] = useState('');
 	const [modalOpen, setModalOpen] = useState(false);
 
+	const { showToast } = useToast();
+
 	useEffect(() => {
 		getItem('/events/5eeb03bf-bb19-4b82-8686-7be55a9d5f87').then((response) => setEvent(response.data));
 	}, []);
@@ -43,7 +46,13 @@ export default function EventDetails() {
 				attendee_email: email,
 				event_id: '5eeb03bf-bb19-4b82-8686-7be55a9d5f87'
 			});
-		} catch (error) {}
+			if (ticket) {
+				showToast('RSVP', 'Successfully registered for the event.');
+				setModalOpen(false);
+			}
+		} catch (error) {
+			showToast('RSVP', 'Failed to register for the event.');
+		}
 	}
 	return (
 		<>
