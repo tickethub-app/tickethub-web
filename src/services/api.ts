@@ -21,3 +21,12 @@ export function getItem(url: string): Promise<any> {
 
 	return response;
 }
+
+export function postItem(url: string, data: any): Promise<any> {
+	const response = api
+		.post(url, data)
+		.then((response) => response.data)
+		.catch((error) => error);
+
+	return response;
+}

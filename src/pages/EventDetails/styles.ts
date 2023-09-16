@@ -152,7 +152,3 @@ export const DialogContent = styled(Content)`
 		outline: none;
 	}
 `;
-
-export const Form = styled.form`
-	margin-top: 2.4rem;
-`;

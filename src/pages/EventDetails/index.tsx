@@ -5,10 +5,12 @@ import * as dayjs from 'dayjs';
 import dataImg from '../../assets/data_wave.jpg';
 import mozdevz_logo from '../../assets/mozdevz.png';
 import Footer from '../../components/Footer';
-import { useEffect, useState } from 'react';
+import { FormEvent, FormEventHandler, useEffect, useState } from 'react';
 import { getItem } from '../../services/api';
 import { getFullDate } from '../../utils/dates';
 import Button from '../../components/Button';
+import { Form } from '../../components/Form/styles';
+import { Input } from '../../components/Input/styles';
 
 interface EventProps {
 	id: string;
@@ -24,10 +26,17 @@ interface EventProps {
 
 export default function EventDetails() {
 	const [event, setEvent] = useState<EventProps | null>();
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
 
 	useEffect(() => {
 		getItem('/events/5eeb03bf-bb19-4b82-8686-7be55a9d5f87').then((response) => setEvent(response.data));
 	}, []);
+
+	function handleSubmitRsvp(e: FormEvent<HTMLFormElement>) {
+		e.preventDefault();
+
+	}
 	return (
 		<>
 			<Header>
@@ -79,32 +88,16 @@ export default function EventDetails() {
 							<DialogOverlay />
 							<DialogContent>
 								<h2>Attendee information</h2>
-								<form action="">
+								<Form onSubmit={handleSubmitRsvp}>
 									<fieldset>
-										<input type="text" />
-										<input type="text" />
+										<Input type="text" placeholder="Name" onChange={(e) => setName(e.target.value)} />
+										<Input type="email" placeholder="E-mail" onChange={(e) => setEmail(e.target.value)} />
 									</fieldset>
 
 									<Dialog.Close asChild>
-										<Button text="RSVP" marginAuto />
+										<Button text="RSVP" marginAuto type="submit" />
 									</Dialog.Close>
-								</form>
-								{/* <DialogDescription>Make changes to your profile here. Click save when you're done.</DialogDescription>
-								<Fieldset>
-									<Label htmlFor="name">Name</Label>
-									<Input id="name" defaultValue="Pedro Duarte" />
-								</Fieldset>
-								<Fieldset>
-									<Label htmlFor="username">Username</Label>
-									<Input id="username" defaultValue="@peduarte" />
-								</Fieldset>
-								<Flex css={{ marginTop: 25, justifyContent: 'flex-end' }}> */}
-								{/* </Flex> */}
-								<Dialog.Close asChild>
-									{/* <IconButton aria-label="Close">
-										<Cross2Icon />
-									</IconButton> */}
-								</Dialog.Close>
+								</Form>
 							</DialogContent>
 						</Dialog.Portal>
 					</Dialog.Root>
