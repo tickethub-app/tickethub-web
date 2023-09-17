@@ -1,16 +1,19 @@
 import { ArrowLeft, Calendar, MapPin } from '@phosphor-icons/react';
-import { Header, MainContent, RegisterButton, DetailsBox, DialogOverlay, DialogContent } from './styles';
+import { Link, useLoaderData } from 'react-router-dom';
+import { Header, MainContent, DetailsBox, DialogOverlay, DialogContent } from './styles';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as dayjs from 'dayjs';
 import dataImg from '../../assets/data_wave.jpg';
 import mozdevz_logo from '../../assets/mozdevz.png';
 import Footer from '../../components/Footer';
-import { FormEvent, FormEventHandler, useEffect, useState } from 'react';
-import { getItem } from '../../services/api';
+import { FormEvent, useEffect, useState } from 'react';
+import { getItem, postItem } from '../../services/api';
 import { getFullDate } from '../../utils/dates';
 import Button from '../../components/Button';
 import { Form } from '../../components/Form/styles';
 import { Input } from '../../components/Input/styles';
+import Toast from '../../components/Toast';
+import { useToast } from '../../contexts/toast';
 
 interface EventProps {
 	id: string;
@@ -24,26 +27,46 @@ interface EventProps {
 	end_time: string;
 }
 
+export async function eventDetailsLoader({ params }: any) {
+	return params;
+}
+
 export default function EventDetails() {
 	const [event, setEvent] = useState<EventProps | null>();
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
+	const [modalOpen, setModalOpen] = useState(false);
+
+	const { eventId } = useLoaderData();
+	const { showToast } = useToast();
 
 	useEffect(() => {
-		getItem('/events/5eeb03bf-bb19-4b82-8686-7be55a9d5f87').then((response) => setEvent(response.data));
+		getItem(`/events/${eventId}`).then((response) => setEvent(response.data));
 	}, []);
 
-	function handleSubmitRsvp(e: FormEvent<HTMLFormElement>) {
+	async function handleSubmitRsvp(e: FormEvent<HTMLFormElement>) {
 		e.preventDefault();
-
+		try {
+			const ticket = await postItem('/tickets', {
+				attendee_name: name,
+				attendee_email: email,
+				event_id: eventId
+			});
+			if (ticket) {
+				showToast('RSVP', 'Successfully registered for the event.');
+				setModalOpen(false);
+			}
+		} catch (error) {
+			showToast('RSVP', 'Failed to register for the event.');
+		}
 	}
 	return (
 		<>
 			<Header>
 				<div>
-					<a href="">
+					<Link to="/">
 						<ArrowLeft size={24} className="icon" color="#FFF" />
-					</a>
+					</Link>
 					<h2>Event details</h2>
 				</div>
 				<img src={dataImg} alt="" />
@@ -80,7 +103,7 @@ export default function EventDetails() {
 							</div>
 						</section>
 					</div>
-					<Dialog.Root>
+					<Dialog.Root open={modalOpen} onOpenChange={setModalOpen}>
 						<Dialog.Trigger asChild>
 							<Button text="RSVP" marginAuto />
 						</Dialog.Trigger>
@@ -94,9 +117,7 @@ export default function EventDetails() {
 										<Input type="email" placeholder="E-mail" onChange={(e) => setEmail(e.target.value)} />
 									</fieldset>
 
-									<Dialog.Close asChild>
-										<Button text="RSVP" marginAuto type="submit" />
-									</Dialog.Close>
+									<Button text="RSVP" marginAuto type="submit" />
 								</Form>
 							</DialogContent>
 						</Dialog.Portal>
@@ -112,6 +133,7 @@ export default function EventDetails() {
 			)}
 
 			<Footer />
+			<Toast />
 		</>
 	);
 }

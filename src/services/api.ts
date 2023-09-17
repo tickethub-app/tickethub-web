@@ -27,6 +27,5 @@ export function postItem(url: string, data: any): Promise<any> {
 		.post(url, data)
 		.then((response) => response.data)
 		.catch((error) => error);
-
 	return response;
 }
