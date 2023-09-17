@@ -10,9 +10,9 @@ function App() {
 		<>
 			<ThemeProvider theme={theme}>
 				{/* <Home /> */}
-				{/* <EventDetails />
-				<GlobalStyle /> */}
+				{/* <EventDetails /> */}
 				<Login />
+				<GlobalStyle />
 			</ThemeProvider>
 		</>
 	);
